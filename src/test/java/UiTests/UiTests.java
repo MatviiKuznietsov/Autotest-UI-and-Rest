@@ -1,6 +1,7 @@
 package UiTests;
 
 import UiTests.Pages.homePage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -10,13 +11,19 @@ public class UiTests extends BaseClass {
     public void useCase1() {
         open("/home");
         homePage homePage = new homePage();
-        homePage.clicklogInSign()
+        String nameLastname = homePage.clicklogInSign()
                 .inputLogin(getLogin())
                 .inputPassword(getPassword())
                 .clickLoginButton()
                 .clickProfileIcon()
                 .clicklinkText()
-                .clickEditInfoButton();
+                .clickEditInfoButton()
+                .inputName(getName())
+                .inputLastName(getLastname())
+                .clickUpdate();
+        System.out.println(nameLastname);
+        System.out.println(getName()+getLastname());
+        Assert.assertEquals(nameLastname, getName()+" "+getLastname());
     }
 
     @Test
