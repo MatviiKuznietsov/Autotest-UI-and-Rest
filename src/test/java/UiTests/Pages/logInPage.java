@@ -21,8 +21,9 @@ public class logInPage {
 
     }
 
-    public void clickLoginButton() {
+    public mainPage clickLoginButton() {
         logiButton.click();
+        return new mainPage();
     }
 
 }

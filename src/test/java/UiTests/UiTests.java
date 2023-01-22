@@ -13,7 +13,9 @@ public class UiTests extends BaseClass {
         homePage.clicklogInSign()
                 .inputLogin(getLogin())
                 .inputPassword(getPassword())
-                .clickLoginButton();
+                .clickLoginButton()
+                .clickProfileIcon()
+                .clicklinkText();
     }
 
     @Test
