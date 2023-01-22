@@ -12,6 +12,68 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <TestNGVersion>7.6.1</TestNGVersion>
+        <Selenium.version>4.7.1</Selenium.version>
+        <WebdriverMabager.version>5.3.1</WebdriverMabager.version>
+        <selenide.version>6.11.0</selenide.version>
+        <OkHttp.version>4.10.0</OkHttp.version>
+        <JSON.version>20220924</JSON.version>
+        <GSON.version>2.10.1</GSON.version>
+        <LOMBOK.version>1.18.24</LOMBOK.version>
     </properties>
+    <dependencies>
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${TestNGVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${Selenium.version}</version>
+        </dependency>
+        <!-- WebdriverMabager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${WebdriverMabager.version}</version>
+        </dependency>
+        <!-- SELENIDE -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+        </dependency>
+        <!-- OkHttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${OkHttp.version}</version>
+        </dependency>
+        <!-- JSON -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${JSON.version}</version>
+        </dependency>
+        <!-- GSON -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${GSON.version}</version>
+        </dependency>
+        <!--lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${LOMBOK.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
 
 </project>
