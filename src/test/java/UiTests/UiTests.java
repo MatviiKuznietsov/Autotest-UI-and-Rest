@@ -10,7 +10,10 @@ public class UiTests extends BaseClass {
     public void useCase1() {
         open("/home");
         homePage homePage = new homePage();
-        homePage.clicklogInSign();
+        homePage.clicklogInSign()
+                .inputLogin(getLogin())
+                .inputPassword(getPassword())
+                .clickLoginButton();
     }
 
     @Test

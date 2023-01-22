@@ -4,8 +4,18 @@ import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
 
 public class BaseClass {
-    public final String login = "MTV";
-    public final String password = "24041985";
+    private final String login = "MTV";
+    private final String password = "24041985";
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+
     @BeforeClass
     public void preparation (){
         Configuration.baseUrl = "https://freelance.lsrv.in.ua";

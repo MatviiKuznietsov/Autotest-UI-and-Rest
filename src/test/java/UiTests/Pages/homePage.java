@@ -7,7 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class homePage {
     private SelenideElement logIn=$(By.linkText("Log in"));
-    public void clicklogInSign(){
+    public logInPage clicklogInSign(){
         logIn.click();
+        return new logInPage();
     }
 }
