@@ -2,9 +2,12 @@ package UiTests;
 
 import org.testng.annotations.Test;
 
-public class UiTests {
+import static com.codeborne.selenide.Selenide.open;
+
+public class UiTests extends BaseClass {
     @Test
     public void useCase1(){
+        open("https://freelance.lsrv.in.ua/home");
 
     }
     @Test
