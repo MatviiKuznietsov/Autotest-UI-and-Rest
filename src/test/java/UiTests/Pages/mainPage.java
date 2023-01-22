@@ -16,7 +16,8 @@ public class mainPage {
         return new mainPage();
     }
 
-    public void clicklinkText() {
+    public profilePage clicklinkText() {
         profile.click();
+        return  new profilePage();
     }
 }
