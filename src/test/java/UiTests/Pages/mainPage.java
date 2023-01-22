@@ -18,6 +18,13 @@ public class mainPage {
 
     public profilePage clicklinkText() {
         profile.click();
-        return  new profilePage();
+        return new profilePage();
     }
+
+    public profilePage goToProfilePage() {
+        clickProfileIcon();
+        clicklinkText();
+        return new profilePage();
+    }
+
 }

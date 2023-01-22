@@ -12,38 +12,39 @@ public class UiTests extends BaseClass {
         open("/home");
         homePage homePage = new homePage();
         String nameLastname = homePage.clicklogInSign()
-                .inputLogin(getLogin())
-                .inputPassword(getPassword())
-                .clickLoginButton()
-                .clickProfileIcon()
-                .clicklinkText()
+                .logInUser(getLogin(), getPassword())
+                .goToProfilePage()
                 .clickEditInfoButton()
                 .inputName(getName())
                 .inputLastName(getLastname())
                 .clickUpdate();
-        System.out.println(nameLastname);
-        System.out.println(getName()+getLastname());
-        Assert.assertEquals(nameLastname, getName()+" "+getLastname());
+        Assert.assertEquals(nameLastname, getName() + " " + getLastname());
     }
 
     @Test
     public void useCase2() {
         open("/home");
         homePage homePage = new homePage();
-        homePage.clicklogInSign();
+        homePage.clicklogInSign()
+                .logInUser(getLogin(), getPassword())
+                .goToProfilePage()
+                .clickAddJobButton();
     }
 
     @Test
     public void useCase3() {
         open("/home");
         homePage homePage = new homePage();
-        homePage.clicklogInSign();
+        homePage.clicklogInSign()
+                .logInUser(getLogin(), getPassword());
     }
 
     @Test
     public void useCase4() {
         open("/home");
         homePage homePage = new homePage();
-        homePage.clicklogInSign();
+        homePage.clicklogInSign()
+                .logInUser(getLogin(), getPassword())
+                .goToProfilePage();
     }
 }
