@@ -8,6 +8,22 @@ public class BaseClass {
     private final String password = "24041985";
     private final String name = "Hello";
     private final String Lastname = "World";
+    private final String title = "New Job";
+    private final String description = "Cool Job";
+    private final String price = "100";
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
 
     public String getLogin() {
         return login;

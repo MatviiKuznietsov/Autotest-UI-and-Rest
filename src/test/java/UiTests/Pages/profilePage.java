@@ -35,8 +35,8 @@ public class profilePage {
         updateSign.click();
         return userNameLastName.getText();
     }
-    public profilePage clickAddJobButton() {
+    public addJobPage clickAddJobButton() {
         addJobButton.click();
-        return new profilePage();
+        return new addJobPage();
     }
 }

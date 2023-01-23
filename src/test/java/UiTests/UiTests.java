@@ -28,7 +28,8 @@ public class UiTests extends BaseClass {
         homePage.clicklogInSign()
                 .logInUser(getLogin(), getPassword())
                 .goToProfilePage()
-                .clickAddJobButton();
+                .clickAddJobButton()
+                .fillNewJob(getTitle(),getDescription(),getPrice());
     }
 
     @Test
