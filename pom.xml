@@ -20,6 +20,7 @@
         <JSON.version>20220924</JSON.version>
         <GSON.version>2.10.1</GSON.version>
         <LOMBOK.version>1.18.24</LOMBOK.version>
+        <extentReport.version>1.0.7</extentReport.version>
     </properties>
     <dependencies>
         <!-- TestNG -->
@@ -71,6 +72,12 @@
             <artifactId>lombok</artifactId>
             <version>${LOMBOK.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- REPORT -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports-testng-adapter</artifactId>
+            <version>${extentReport.version}</version>
         </dependency>
 
     </dependencies>

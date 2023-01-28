@@ -1,9 +1,16 @@
 package UiTests;
 
+import UiTests.Listeners.CustomExtentReportListener;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
+@Listeners(CustomExtentReportListener.class)
 public class BaseClass {
+    static {
+        System.setProperty("extent.reporter.html.start", "true");
+        System.setProperty("extent.reporter.html.out", "target/extentReport/Extent.Html");
+    }
     private final String login = "MTV";
     private final String password = "24041985";
     private final String name = "Hello";
@@ -49,9 +56,8 @@ public class BaseClass {
         Configuration.savePageSource = false;
         Configuration.holdBrowserOpen = true;
         Configuration.downloadsFolder = "target/download/";
-        Configuration.timeout = 10000;
+        Configuration.timeout = 3000;
         Configuration.browserSize = "1500x800";
+        Configuration.screenshots = true;
     }
-
-
 }

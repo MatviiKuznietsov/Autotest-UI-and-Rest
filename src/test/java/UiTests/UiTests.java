@@ -1,10 +1,12 @@
 package UiTests;
 
 import UiTests.Pages.homePage;
+import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.screenshot;
 
 public class UiTests extends BaseClass {
     @Test
@@ -38,6 +40,7 @@ public class UiTests extends BaseClass {
         homePage homePage = new homePage();
         homePage.clicklogInSign()
                 .logInUser(getLogin(), getPassword());
+
     }
 
     @Test
