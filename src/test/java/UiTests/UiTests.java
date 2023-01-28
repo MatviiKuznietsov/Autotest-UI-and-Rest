@@ -51,6 +51,7 @@ public class UiTests extends BaseClass {
         HomePage homePage = new HomePage();
         homePage.clicklogInSign()
                 .logInUser(getLogin(), getPassword())
-                .goToProfilePage();
+                .goToProfilePage()
+                .removeJobSign();
     }
 }

@@ -1,6 +1,9 @@
 package UiTests.Pages;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.commands.PressEnter;
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -13,8 +16,9 @@ public class ProfilePage {
     private SelenideElement lastNameInput = $(By.xpath("//input[@formcontrolname=\"lastname\"]"));
     private SelenideElement updateSign = $(By.xpath("//span[contains(text(),' Update ')]"));
     private SelenideElement userNameLastName = $(By.xpath("//h3[@style]"));
-
     private SelenideElement newJobTitle = $(By.xpath("//mat-card-title[contains(text(),'New Job')]"));
+
+    private SelenideElement removeJobButton = $(By.xpath("//span[contains(text(),' Remove Job ')]"));
 
     public SelenideElement getNewJobTitle() {
         return newJobTitle;
@@ -43,5 +47,10 @@ public class ProfilePage {
     public AddJobPage clickAddJobButton() {
         addJobButton.click();
         return new AddJobPage();
+    }
+
+    public void removeJobSign() {
+        removeJobButton.click();
+        Selenide.actions().sendKeys("Enter").perform();
     }
 }
