@@ -46,7 +46,7 @@ public class UiTests extends BaseClass {
                 .logInUser(getLogin(), getPassword())
                 .openJobOffer()
                 .addComment();
-       // Selenide.closeWindow();
+        Selenide.closeWindow();
     }
 
     @Test

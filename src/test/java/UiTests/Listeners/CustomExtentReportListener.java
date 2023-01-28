@@ -15,7 +15,8 @@ import java.util.Base64;
 public class CustomExtentReportListener extends ExtentITestListenerClassAdapter {
     private File getScreenShot(ITestResult iTestResult){
         File fileForCopy = new File(iTestResult.getName() + ".jpg");
-        File screenshotFile = new File(Selenide.screenshot("reportScreen"));
+        Selenide.screenshot("reportScreen");
+        File screenshotFile = new File("build/reports/tests/reportScreen.png");
         try {
             FileUtils.copyFile(screenshotFile, fileForCopy);
         } catch (IOException e){
