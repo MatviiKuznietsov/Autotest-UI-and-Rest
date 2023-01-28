@@ -1,34 +1,33 @@
 package UiTests.Pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class logInPage {
+public class LogInPage {
     private SelenideElement inputLogin = $("input#mat-input-0");
     private SelenideElement inputPassword = $("input#mat-input-1");
     private SelenideElement logiButton = $(".mat-button-wrapper");
 
-    public logInPage inputLogin(String login) {
+    public LogInPage inputLogin(String login) {
         inputLogin.setValue(login);
-        return new logInPage();
+        return new LogInPage();
     }
 
-    public logInPage inputPassword(String password) {
+    public LogInPage inputPassword(String password) {
         inputPassword.setValue(password);
-        return new logInPage();
+        return new LogInPage();
     }
 
-    public mainPage clickLoginButton() {
+    public MainPage clickLoginButton() {
         logiButton.click();
-        return new mainPage();
+        return new MainPage();
     }
-    public mainPage logInUser (String login, String password){
+    public MainPage logInUser (String login, String password){
         inputLogin(login);
         inputPassword(password);
         clickLoginButton();
-        return new mainPage();
+        return new MainPage();
     }
 
 }

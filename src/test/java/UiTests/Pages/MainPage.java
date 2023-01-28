@@ -1,30 +1,36 @@
 package UiTests.Pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class mainPage {
+public class MainPage {
     private SelenideElement iconProfile = $(".mat-focus-indicator.mat-menu-trigger");
     private SelenideElement profile = $(By.xpath("//*[.='Profile']"));
 
-    public mainPage clickProfileIcon() {
+    private SelenideElement jobOffer= $(By.xpath("(//button)[2]"));
+
+
+    public MainPage clickProfileIcon() {
         iconProfile.click();
-        return new mainPage();
+        return new MainPage();
     }
 
-    public profilePage clicklinkText() {
+    public ProfilePage clicklinkText() {
         profile.click();
-        return new profilePage();
+        return new ProfilePage();
     }
 
-    public profilePage goToProfilePage() {
+    public ProfilePage goToProfilePage() {
         clickProfileIcon();
         clicklinkText();
-        return new profilePage();
+        return new ProfilePage();
+    }
+    public JobPages openJobOffer(){
+        jobOffer.click();
+        return new JobPages();
     }
 
 }

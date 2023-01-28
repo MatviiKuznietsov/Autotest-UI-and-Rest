@@ -5,10 +5,10 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class homePage {
+public class HomePage {
     private SelenideElement logIn=$(By.linkText("Log in"));
-    public logInPage clicklogInSign(){
+    public LogInPage clicklogInSign(){
         logIn.click();
-        return new logInPage();
+        return new LogInPage();
     }
 }
