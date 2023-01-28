@@ -1,4 +1,4 @@
 package ApiTests.Controllers;
 
-public class jobController {
+public class ImageController {
 }

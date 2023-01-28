@@ -1,4 +1,4 @@
 package ApiTests.Controllers;
 
-public class authController {
+public class JobController {
 }

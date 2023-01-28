@@ -1,4 +1,4 @@
 package ApiTests.entities;
 
-public class authSignIn {
+public class CommentCreate {
 }

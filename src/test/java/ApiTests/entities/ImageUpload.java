@@ -1,4 +1,4 @@
 package ApiTests.entities;
 
-public class authSignup {
+public class ImageUpload {
 }

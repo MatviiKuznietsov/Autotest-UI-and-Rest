@@ -1,4 +1,4 @@
 package ApiTests.entities;
 
-public class commentCreate {
+public class JobDelete {
 }
