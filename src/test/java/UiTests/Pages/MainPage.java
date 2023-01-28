@@ -9,8 +9,8 @@ import static com.codeborne.selenide.Selenide.$$;
 public class MainPage {
     private SelenideElement iconProfile = $(".mat-focus-indicator.mat-menu-trigger");
     private SelenideElement profile = $(By.xpath("//*[.='Profile']"));
-
-    private SelenideElement jobOffer= $(By.xpath("(//button)[2]"));
+    private SelenideElement logout = $(By.xpath("//*[.='Logout']"));
+    private SelenideElement jobOffer = $(By.xpath("(//button)[2]"));
 
 
     public MainPage clickProfileIcon() {
@@ -18,19 +18,28 @@ public class MainPage {
         return new MainPage();
     }
 
-    public ProfilePage clicklinkText() {
+    public ProfilePage clicklinkProfile() {
         profile.click();
         return new ProfilePage();
     }
 
     public ProfilePage goToProfilePage() {
         clickProfileIcon();
-        clicklinkText();
+        clicklinkProfile();
         return new ProfilePage();
     }
-    public JobPages openJobOffer(){
+
+    public JobPages openJobOffer() {
         jobOffer.click();
         return new JobPages();
+    }
+    public ProfilePage clicklinkLogOut() {
+        logout.click();
+        return new ProfilePage();
+    }
+    public void logOut() {
+        clickProfileIcon();
+        clicklinkLogOut();
     }
 
 }

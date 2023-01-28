@@ -2,6 +2,7 @@ package UiTests;
 
 import UiTests.Pages.HomePage;
 import UiTests.Pages.ProfilePage;
+import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,7 @@ public class UiTests extends BaseClass {
                 .inputName(getName())
                 .inputLastName(getLastname())
                 .clickUpdate();
+        Selenide.closeWindow();
         Assert.assertEquals(nameLastname, getName() + " " + getLastname());
     }
 
@@ -30,9 +32,10 @@ public class UiTests extends BaseClass {
                 .logInUser(getLogin(), getPassword())
                 .goToProfilePage()
                 .clickAddJobButton()
-                .fillNewJob(getTitle(),getDescription(),getPrice());
+                .fillNewJob(getTitle(), getDescription(), getPrice());
         ProfilePage profilePage = new ProfilePage();
-        Assert.assertEquals(profilePage.getNewJobTitle().getText(),nameLastname);
+        Assert.assertEquals(profilePage.getNewJobTitle().getText(), nameLastname);
+        Selenide.closeWindow();
     }
 
     @Test
@@ -43,6 +46,7 @@ public class UiTests extends BaseClass {
                 .logInUser(getLogin(), getPassword())
                 .openJobOffer()
                 .addComment();
+       // Selenide.closeWindow();
     }
 
     @Test
@@ -52,6 +56,7 @@ public class UiTests extends BaseClass {
         homePage.clicklogInSign()
                 .logInUser(getLogin(), getPassword())
                 .goToProfilePage()
+                .scrollPage()
                 .removeJobSign();
     }
 }

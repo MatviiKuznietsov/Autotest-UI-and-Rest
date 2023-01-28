@@ -54,7 +54,7 @@ public class BaseClass {
         Configuration.baseUrl = "https://freelance.lsrv.in.ua";
         Configuration.browser = "firefox";
         Configuration.savePageSource = false;
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.downloadsFolder = "target/download/";
         Configuration.timeout = 3000;
         Configuration.browserSize = "1500x800";
