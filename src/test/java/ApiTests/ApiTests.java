@@ -1,8 +1,12 @@
 package ApiTests;
 
 import ApiTests.Controllers.AuthController;
+import ApiTests.Controllers.UserController;
 import ApiTests.entities.AuthSignIn;
 import ApiTests.entities.AuthSignup;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,5 +30,10 @@ public class ApiTests {
         authSignIN.setPassword("Pass12345");
         AuthController authController = new AuthController();
         authController.signIn(authSignIN);
+    }
+    @Test
+    public void getUserInfo() throws IOException {
+        UserController userController =new UserController();
+        userController.UserInfo();
     }
 }
