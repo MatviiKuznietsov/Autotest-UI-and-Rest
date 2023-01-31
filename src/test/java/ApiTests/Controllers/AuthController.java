@@ -17,10 +17,8 @@ public class AuthController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
-       // AuthSignup authSignup = gson.fromJson(response.body().string(), OrdersNew.class);
         System.out.println(response.code());
-        System.out.println(response.body());
-        System.out.println(response);
+        System.out.println(response.body().string());
     }
     public void signIn (AuthSignIn authSignIn) throws IOException {
         Gson gson = new Gson();
@@ -31,9 +29,7 @@ public class AuthController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
-        // AuthSignup authSignup = gson.fromJson(response.body().string(), OrdersNew.class);
         System.out.println(response.code());
-        System.out.println(response.body());
-        System.out.println(response);
+        System.out.println(response.body().string());
     }
 }
