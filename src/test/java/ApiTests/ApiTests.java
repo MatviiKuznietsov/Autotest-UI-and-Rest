@@ -1,20 +1,16 @@
 package ApiTests;
 
 import ApiTests.Controllers.AuthController;
-import ApiTests.Controllers.CommentController;
-import ApiTests.Controllers.JobController;
-import ApiTests.Controllers.UserController;
-import ApiTests.entities.*;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import org.testng.Assert;
+import Api.Controllers.CommentController;
+import Api.Controllers.JobController;
+import Api.Controllers.UserController;
+import entities.*;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class ApiTests {
-    private final String token = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyOSIsIm5hbWUiOm51bGwsImlkIjoiMjkiLCJ1c2VybmFtZSI6InVzZXIzIiwibGFzdG5hbWUiOm51bGwsImlhdCI6MTY3NTE1NTI5NiwiZXhwIjoxNjc1MTU4ODk2fQ.qFYBphf3BjTx2RbEJyraSU3jMr70GrTYv5ZKcVeq5b7RMnjcChivzqNtxFi3awHXV-ipRtqnzPpLaPrNiuqRyg";
+    public String token;
 
     @Test (priority = 1)
     public void signUP() throws IOException {
@@ -24,6 +20,7 @@ public class ApiTests {
         authSignup.setConfirmPassword("Pass12345");
         AuthController authController = new AuthController();
         authController.signUp(authSignup);
+
     }
 
     @Test (priority = 2)
@@ -32,7 +29,8 @@ public class ApiTests {
         authSignIN.setUsername("user3");
         authSignIN.setPassword("Pass12345");
         AuthController authController = new AuthController();
-        authController.signIn(authSignIN);
+        token = authController.signIn(authSignIN);
+
     }
 
     //- CommentControllers----------------------------------------------------------------------------------------------

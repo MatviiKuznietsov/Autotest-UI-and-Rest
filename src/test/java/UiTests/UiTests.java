@@ -1,7 +1,7 @@
 package UiTests;
 
-import UiTests.Pages.HomePage;
-import UiTests.Pages.ProfilePage;
+import UI.Pages.HomePage;
+import UI.Pages.ProfilePage;
 import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import org.testng.annotations.Test;

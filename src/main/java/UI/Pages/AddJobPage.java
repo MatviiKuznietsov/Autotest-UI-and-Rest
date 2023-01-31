@@ -1,4 +1,4 @@
-package UiTests.Pages;
+package UI.Pages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;

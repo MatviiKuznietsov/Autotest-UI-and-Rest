@@ -1,10 +1,9 @@
-package ApiTests.Controllers;
+package Api.Controllers;
 
-import ApiTests.entities.AuthSignup;
-import ApiTests.entities.UserUpdate;
+import entities.AuthSignup;
+import entities.UserUpdate;
 import com.google.gson.Gson;
 import okhttp3.*;
-import org.testng.annotations.Test;
 
 import java.io.IOException;
 

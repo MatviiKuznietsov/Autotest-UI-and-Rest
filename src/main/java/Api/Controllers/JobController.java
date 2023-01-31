@@ -1,11 +1,10 @@
-package ApiTests.Controllers;
+package Api.Controllers;
 
-import ApiTests.entities.CommentCreate;
-import ApiTests.entities.JobCreate;
-import ApiTests.entities.JobDelete;
+import entities.JobCreate;
+import entities.JobDelete;
 import com.google.gson.Gson;
 import okhttp3.*;
-import org.testng.annotations.Test;
+
 
 import java.io.IOException;
 

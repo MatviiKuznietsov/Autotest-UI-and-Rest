@@ -13,8 +13,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <TestNGVersion>7.6.1</TestNGVersion>
-        <Selenium.version>4.7.1</Selenium.version>
-        <WebdriverMabager.version>5.3.1</WebdriverMabager.version>
         <selenide.version>6.11.0</selenide.version>
         <OkHttp.version>4.10.0</OkHttp.version>
         <JSON.version>20220924</JSON.version>
@@ -29,18 +27,6 @@
             <artifactId>testng</artifactId>
             <version>${TestNGVersion}</version>
             <scope>test</scope>
-        </dependency>
-        <!-- Selenium -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${Selenium.version}</version>
-        </dependency>
-        <!-- WebdriverMabager -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${WebdriverMabager.version}</version>
         </dependency>
         <!-- SELENIDE -->
         <dependency>

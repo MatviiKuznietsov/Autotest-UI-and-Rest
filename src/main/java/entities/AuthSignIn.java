@@ -1,4 +1,4 @@
-package ApiTests.entities;
+package entities;
 
 import lombok.Data;
 
@@ -6,5 +6,7 @@ import lombok.Data;
 public class AuthSignIn {
     private String username = "test";
     private String password = "pass12345";
+
+    private String token;
 
 }
