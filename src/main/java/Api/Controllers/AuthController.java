@@ -1,11 +1,10 @@
-package ApiTests.Controllers;
+package Api.Controllers;
 
 import entities.AuthSignIn;
 import entities.AuthSignup;
 import com.google.gson.*;
 import okhttp3.*;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 import java.io.IOException;
 
@@ -21,6 +20,9 @@ public class AuthController {
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
         System.out.println(response.body().string());
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
     }
 
     public String signIn(AuthSignIn authSignIn) throws IOException {
@@ -36,6 +38,9 @@ public class AuthController {
         System.out.println(response.code());
         System.out.println(newUser);
         String token = newUser.getToken();
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
         return token;
     }
 }

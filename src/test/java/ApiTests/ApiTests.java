@@ -1,6 +1,6 @@
 package ApiTests;
 
-import ApiTests.Controllers.AuthController;
+import Api.Controllers.AuthController;
 import Api.Controllers.CommentController;
 import Api.Controllers.JobController;
 import Api.Controllers.UserController;
@@ -53,10 +53,10 @@ public class ApiTests {
 
     //- JobController----------------------------------------------------------------------------------------------
     @Test (priority = 12)
-    public void removeWork() throws IOException {
+    public void removeWork() throws IOException, RuntimeException {
         JobDelete jobDelete = new JobDelete();
         JobController jobController = new JobController();
-        jobController.deleteJobId(jobDelete,token,118);
+        jobController.deleteJobId(jobDelete,token,578);
     }
 
     @Test (priority = 6)
@@ -104,7 +104,7 @@ public class ApiTests {
     @Test (priority = 4)
     public void finedUserById() throws IOException {
         UserController userController = new UserController();
-        userController.finedUserId(29, token);
+        userController.finedUserId(25, token);
     }
 
     @Test (priority = 5)

@@ -1,6 +1,5 @@
 package Api.Controllers;
 
-import entities.AuthSignup;
 import entities.UserUpdate;
 import com.google.gson.Gson;
 import okhttp3.*;
@@ -8,7 +7,7 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class UserController {
-    public void updateUser(UserUpdate userUpdate, String token) throws IOException {
+    public Response updateUser(UserUpdate userUpdate, String token) throws IOException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(userUpdate), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -20,9 +19,13 @@ public class UserController {
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
         System.out.println(response.body().string());
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
+        return  response;
     }
 
-    public void finedUserId(Integer id, String token) throws IOException {
+    public Response  finedUserId(Integer id, String token) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .get()
@@ -32,9 +35,13 @@ public class UserController {
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
         System.out.println(response.body().string());
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
+        return  response;
     }
 
-    public void UserInfo(String token) throws IOException {
+    public Response UserInfo(String token) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .get()
@@ -44,5 +51,9 @@ public class UserController {
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
         System.out.println(response.body().string());
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
+        return  response;
     }
 }

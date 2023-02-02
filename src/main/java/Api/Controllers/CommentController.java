@@ -1,7 +1,6 @@
 package Api.Controllers;
 
 import entities.CommentCreate;
-import entities.UserUpdate;
 import com.google.gson.Gson;
 import okhttp3.*;
 
@@ -21,6 +20,9 @@ public class CommentController {
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
         System.out.println(response.body().string());
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
     }
 
     public void getComment(String token, Integer id) throws IOException {
@@ -33,5 +35,8 @@ public class CommentController {
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
         System.out.println(response.body().string());
+        if (!response.isSuccessful()) {
+            throw new RuntimeException("Code is not succes " + response.code());
+        }
     }
 }
