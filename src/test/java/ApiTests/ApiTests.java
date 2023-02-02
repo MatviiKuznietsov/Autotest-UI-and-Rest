@@ -5,6 +5,7 @@ import Api.Controllers.CommentController;
 import Api.Controllers.JobController;
 import Api.Controllers.UserController;
 import entities.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class ApiTests {
     public String token;
 
-    @Test (priority = 1)
+    @Test(priority = 1)
     public void signUP() throws IOException {
         AuthSignup authSignup = new AuthSignup();
         authSignup.setUsername("user3");
@@ -23,7 +24,7 @@ public class ApiTests {
 
     }
 
-    @Test (priority = 2)
+    @Test(priority = 2)
     public void signIn() throws IOException {
         AuthSignIn authSignIN = new AuthSignIn();
         authSignIN.setUsername("user3");
@@ -34,7 +35,7 @@ public class ApiTests {
     }
 
     //- CommentControllers----------------------------------------------------------------------------------------------
-    @Test (priority = 10)
+    @Test(priority = 10)
     public void addComment() throws IOException {
         CommentCreate commentCreate = new CommentCreate();
         commentCreate.setId(1);
@@ -42,25 +43,28 @@ public class ApiTests {
         commentCreate.setCommentDate("22-02-2022");
         commentCreate.setMessage("New message");
         CommentController commentController = new CommentController();
-        commentController.createComment(commentCreate, token, 29);
+        CommentCreate commentCreateCheckResult = commentController.createComment(commentCreate, token, 29);
+        Assert.assertEquals(commentCreateCheckResult.getMessage(), commentCreate.getMessage());
     }
 
-    @Test (priority = 11)
+    @Test(priority = 11)
     public void showComment() throws IOException {
         CommentController commentController = new CommentController();
-        commentController.getComment(token, 1);
+        String message = commentController.getComment(token, 1);
+        System.out.println(message);
     }
 
     //- JobController----------------------------------------------------------------------------------------------
-    @Test (priority = 12)
+    @Test(priority = 12)
     public void removeWork() throws IOException, RuntimeException {
         JobDelete jobDelete = new JobDelete();
         JobController jobController = new JobController();
-        jobController.deleteJobId(jobDelete,token,578);
+        String message = jobController.deleteJobId(jobDelete, token, 578);
+        System.out.println(message);
     }
 
-    @Test (priority = 6)
-    public void addWork() throws IOException {
+    @Test(priority = 6)
+    public void addWork() throws IOException, IllegalStateException {
         JobCreate jobCreate = new JobCreate();
         jobCreate.setId(1);
         jobCreate.setUser("user3");
@@ -68,29 +72,33 @@ public class ApiTests {
         jobCreate.setPrice(50);
         jobCreate.setDescription("This is my new work");
         JobController jobController = new JobController();
-        jobController.createJob(jobCreate, token);
+        JobCreate jobCreateCheckResult = jobController.createJob(jobCreate, token);
+        Assert.assertEquals(jobCreateCheckResult.getTitle(), jobCreate.getTitle());
     }
 
-    @Test (priority = 7)
+    @Test(priority = 7)
     public void getWorkById() throws IOException {
         JobController jobController = new JobController();
-        jobController.getJobId(token, 1);
+        String title = jobController.getJobId(token, 1);
+        System.out.println(title);
     }
 
-    @Test (priority = 8)
+    @Test(priority = 8)
     public void getUserWork() throws IOException {
         JobController jobController = new JobController();
-        jobController.getJobs(token);
+        String title = jobController.getJobs(token);
+        System.out.println(title);
     }
 
-    @Test (priority = 9)
+    @Test(priority = 9)
     public void getAllWork() throws IOException {
         JobController jobController = new JobController();
-        jobController.getAllJobs(token);
+        String title = jobController.getAllJobs(token);
+        System.out.println(title);
     }
 
     //- UserController ----------------------------------------------------------------------------------------------
-    @Test (priority = 3)
+    @Test(priority = 3)
     public void updateUserInfo() throws IOException {
         UserUpdate userUpdate = new UserUpdate();
         userUpdate.setId(28);
@@ -98,18 +106,21 @@ public class ApiTests {
         userUpdate.setLastname("MyNewLastName");
         userUpdate.setName("NewName");
         UserController userController = new UserController();
-        userController.updateUser(userUpdate, token);
+        UserUpdate userUpdateCheckResult = userController.updateUser(userUpdate, token);
+        Assert.assertEquals(userUpdateCheckResult.getName(), userUpdate.getName());
     }
 
-    @Test (priority = 4)
+    @Test(priority = 4)
     public void finedUserById() throws IOException {
         UserController userController = new UserController();
-        userController.finedUserId(25, token);
+        String username = userController.finedUserId(25, token);
+        System.out.println(username);
     }
 
-    @Test (priority = 5)
+    @Test(priority = 5)
     public void getUserInfo() throws IOException {
         UserController userController = new UserController();
-        userController.UserInfo(token);
+        String username = userController.UserInfo(token);
+        System.out.println(username);
     }
 }

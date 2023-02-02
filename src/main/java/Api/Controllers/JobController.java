@@ -4,11 +4,13 @@ import entities.JobCreate;
 import entities.JobDelete;
 import com.google.gson.Gson;
 import okhttp3.*;
+import org.json.JSONObject;
 
 import java.io.IOException;
+
 public class JobController {
 
-    public Response deleteJobId(JobDelete jobDelete, String token, Integer id) throws IOException, RuntimeException {
+    public String deleteJobId(JobDelete jobDelete, String token, Integer id) throws IOException, RuntimeException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(jobDelete), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -18,15 +20,16 @@ public class JobController {
                 .build();
         Response response = new OkHttpClient().newCall(request).execute();
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        JSONObject jsonObject =new JSONObject(response.body().string().replace("[", "").replace("]", ""));
+        System.out.println(jsonObject);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
-        return  response;
+        return jsonObject.get("message").toString();
     }
 
 
-    public Response createJob(JobCreate jobCreate, String token) throws IOException {
+    public JobCreate createJob(JobCreate jobCreate, String token) throws IOException, IllegalStateException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(jobCreate), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -36,16 +39,17 @@ public class JobController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
+        JobCreate jobCreate1 = gson.fromJson(response.body().string(), JobCreate.class);
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        System.out.println(jobCreate1);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
-        return  response;
+        return jobCreate1;
     }
 
 
-    public Response getJobId(String token, Integer id) throws IOException {
+    public String getJobId(String token, Integer id) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .get()
@@ -54,14 +58,15 @@ public class JobController {
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        JSONObject jsonObject = new JSONObject(response.body().string().replace("[", "").replace("]", ""));
+        System.out.println(jsonObject);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
-        return  response;
+        return jsonObject.get("title").toString();
     }
 
-    public Response getJobs(String token) throws IOException {
+    public String getJobs(String token) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .get()
@@ -70,14 +75,15 @@ public class JobController {
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        JSONObject jsonObject = new JSONObject(response.body().string().replace("[", "").replace("]", ""));
+        System.out.println(jsonObject);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
-        return  response;
+        return jsonObject.get("title").toString();
     }
 
-    public Response getAllJobs(String token) throws IOException {
+    public String getAllJobs(String token) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .get()
@@ -86,10 +92,11 @@ public class JobController {
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        JSONObject jsonObject = new JSONObject(response.body().string().replace("[", "").replace("]", ""));
+        System.out.println(jsonObject);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
-        return  response;
+        return jsonObject.get("title").toString();
     }
 }

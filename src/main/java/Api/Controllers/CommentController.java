@@ -3,12 +3,13 @@ package Api.Controllers;
 import entities.CommentCreate;
 import com.google.gson.Gson;
 import okhttp3.*;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 public class CommentController {
 
-    public void createComment(CommentCreate commentCreate, String token, Integer id) throws IOException {
+    public CommentCreate createComment(CommentCreate commentCreate, String token, Integer id) throws IOException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(commentCreate), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -18,14 +19,16 @@ public class CommentController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
+        CommentCreate commentCreate1 = gson.fromJson(response.body().string(), CommentCreate.class);
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        System.out.println(commentCreate1);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
+        return commentCreate1;
     }
 
-    public void getComment(String token, Integer id) throws IOException {
+    public String getComment(String token, Integer id) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .get()
@@ -34,9 +37,11 @@ public class CommentController {
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
         System.out.println(response.code());
-        System.out.println(response.body().string());
+        JSONObject jsonObject = new JSONObject(response.body().string().replace("[", "").replace("]", ""));
+        System.out.println(jsonObject);
         if (!response.isSuccessful()) {
             throw new RuntimeException("Code is not succes " + response.code());
         }
+        return jsonObject.get("message").toString();
     }
 }
