@@ -1,7 +1,8 @@
-package UiTests;
+package uiTests;
 
-import UI.Pages.HomePage;
-import UI.Pages.ProfilePage;
+import ui.pages.HomePage;
+import ui.pages.JobPages;
+import ui.pages.ProfilePage;
 import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class UiTests extends BaseClass {
     @Test
-    public void useCase1() {
+    public void useCase1EditeProfile() {
         open("/home");
         HomePage homePage = new HomePage();
         String nameLastname = homePage.clicklogInSign()
@@ -25,7 +26,7 @@ public class UiTests extends BaseClass {
     }
 
     @Test
-    public void useCase2() {
+    public void useCase2CreateNewJob() {
         open("/home");
         HomePage homePage = new HomePage();
         String nameLastname = homePage.clicklogInSign()
@@ -39,24 +40,38 @@ public class UiTests extends BaseClass {
     }
 
     @Test
-    public void useCase3() {
+    public void useCase3AddComment() {
         open("/home");
+
         HomePage homePage = new HomePage();
-        homePage.clicklogInSign()
+        String jobComment = homePage.clicklogInSign()
                 .logInUser(getLogin(), getPassword())
                 .openJobOffer()
-                .addComment();
+                .addComment(getJobComment());
+        Assert.assertEquals(jobComment, getJobComment());
         Selenide.closeWindow();
     }
 
     @Test
-    public void useCase4() {
+    public void useCase4DeleteJob() {
         open("/home");
         HomePage homePage = new HomePage();
-        homePage.clicklogInSign()
+        int captureOfJobBegin = homePage.clicklogInSign()
                 .logInUser(getLogin(), getPassword())
                 .goToProfilePage()
                 .scrollPage()
-                .removeJobSign();
+                .removeJobSign()
+                .getCaptureOfJob();
+        Selenide.closeWindow();
+
+        open("/home");
+        HomePage homePage2 = new HomePage();
+        int captureOfJobEnd = homePage2.clicklogInSign()
+                .logInUser(getLogin(), getPassword())
+                .goToProfilePage()
+                .getCaptureOfJob();
+
+        Assert.assertEquals(captureOfJobBegin - 1, captureOfJobEnd);
+
     }
 }

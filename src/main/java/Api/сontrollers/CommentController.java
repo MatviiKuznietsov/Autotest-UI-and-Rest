@@ -1,6 +1,6 @@
-package Api.Controllers;
+package Api.сontrollers;
 
-import entities.CommentCreate;
+import entities.Comment;
 import com.google.gson.Gson;
 import okhttp3.*;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class CommentController {
 
-    public CommentCreate createComment(CommentCreate commentCreate, String token, Integer id) throws IOException {
+    public Comment createComment(Comment commentCreate, String token, Integer id) throws IOException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(commentCreate), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -19,7 +19,7 @@ public class CommentController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
-        CommentCreate commentCreate1 = gson.fromJson(response.body().string(), CommentCreate.class);
+        Comment commentCreate1 = gson.fromJson(response.body().string(), Comment.class);
         System.out.println(response.code());
         System.out.println(commentCreate1);
         if (!response.isSuccessful()) {

@@ -3,9 +3,9 @@ package entities;
 import lombok.Data;
 
 @Data
-public class UserUpdate {
+public class Comment {
     private int id;
+    private String message;
     private String username;
-    private String name;
-    private String lastname;
+    private String commentDate;
 }

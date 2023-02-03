@@ -1,6 +1,6 @@
-package UiTests;
+package uiTests;
 
-import UiTests.Listeners.CustomExtentReportListener;
+import uiTests.listeners.CustomExtentReportListener;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -11,6 +11,7 @@ public class BaseClass {
         System.setProperty("extent.reporter.html.start", "true");
         System.setProperty("extent.reporter.html.out", "target/extentReport/Extent.Html");
     }
+
     private final String login = "MTV";
     private final String password = "24041985";
     private final String name = "Hello";
@@ -18,6 +19,12 @@ public class BaseClass {
     private final String title = "New Job";
     private final String description = "Cool Job";
     private final String price = "100";
+
+    private final String jobComment = "Hello i`m your new best job";
+
+    public String getJobComment() {
+        return jobComment;
+    }
 
     public String getTitle() {
         return title;
@@ -54,7 +61,7 @@ public class BaseClass {
         Configuration.baseUrl = "https://freelance.lsrv.in.ua";
         Configuration.browser = "firefox";
         Configuration.savePageSource = false;
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = true;
         Configuration.downloadsFolder = "target/download/";
         Configuration.timeout = 3000;
         Configuration.browserSize = "1500x800";

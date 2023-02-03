@@ -1,6 +1,6 @@
-package Api.Controllers;
+package Api.сontrollers;
 
-import entities.UserUpdate;
+import entities.User;
 import com.google.gson.Gson;
 import okhttp3.*;
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class UserController {
-    public UserUpdate updateUser(UserUpdate userUpdate, String token) throws IOException {
+    public User updateUser(User userUpdate, String token) throws IOException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(userUpdate), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -18,7 +18,7 @@ public class UserController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
-        UserUpdate userUpdate1 = gson.fromJson(response.body().string(), UserUpdate.class);
+        User userUpdate1 = gson.fromJson(response.body().string(), User.class);
         System.out.println(response.code());
         System.out.println(userUpdate1);
         if (!response.isSuccessful()) {

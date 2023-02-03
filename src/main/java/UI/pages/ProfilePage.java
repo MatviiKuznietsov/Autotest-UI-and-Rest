@@ -1,11 +1,8 @@
-package UI.Pages;
+package ui.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.commands.PressEnter;
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.WheelInput;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -19,9 +16,15 @@ public class ProfilePage {
     private SelenideElement userNameLastName = $(By.xpath("//h3[@style]"));
     private SelenideElement newJobTitle = $(By.xpath("//mat-card-title[contains(text(),'New Job')]"));
     private SelenideElement removeJobButton = $(By.xpath("//span[contains(text(),' Remove Job ')]"));
-
     private SelenideElement profile = $(By.xpath("//*[.='Profile']"));
     private SelenideElement logout = $(By.xpath("//*[.='Logout']"));
+    private SelenideElement captureOfJobBegin = $(By.xpath("//h2[@class]"));
+
+    //
+    public int getCaptureOfJob() {
+        int numberOfWork = Integer.parseInt(captureOfJobBegin.getText().replace("You have ", "").replace(" jobs", ""));
+        return numberOfWork;
+    }
 
     public SelenideElement getNewJobTitle() {
         return newJobTitle;
@@ -52,23 +55,27 @@ public class ProfilePage {
         return new AddJobPage();
     }
 
-    public void removeJobSign() {
+    public ProfilePage removeJobSign() {
         removeJobButton.click();
         Selenide.actions().sendKeys("Enter").perform();
+        return new ProfilePage();
     }
 
     public ProfilePage scrollPage() {
-        Selenide.actions().scrollByAmount(0,10000).perform();
+        Selenide.actions().scrollByAmount(0, 10000).perform();
         return new ProfilePage();
     }
+
     public ProfilePage clicklinkProfile() {
         profile.click();
         return new ProfilePage();
     }
+
     public ProfilePage clicklinkLogOut() {
         logout.click();
         return new ProfilePage();
     }
+
     public void logOut() {
         clicklinkProfile();
         clicklinkLogOut();

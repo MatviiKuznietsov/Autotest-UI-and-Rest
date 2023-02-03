@@ -1,7 +1,7 @@
-package Api.Controllers;
+package Api.сontrollers;
 
-import entities.JobCreate;
-import entities.JobDelete;
+import entities.Job;
+import entities.JobD;
 import com.google.gson.Gson;
 import okhttp3.*;
 import org.json.JSONObject;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class JobController {
 
-    public String deleteJobId(JobDelete jobDelete, String token, Integer id) throws IOException, RuntimeException {
+    public String deleteJobId(JobD jobDelete, String token, Integer id) throws IOException, RuntimeException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(jobDelete), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -29,7 +29,7 @@ public class JobController {
     }
 
 
-    public JobCreate createJob(JobCreate jobCreate, String token) throws IOException, IllegalStateException {
+    public Job createJob(Job jobCreate, String token) throws IOException, IllegalStateException {
         Gson gson = new Gson();
         RequestBody body = RequestBody.create(gson.toJson(jobCreate), MediaType.parse("application/json"));
         Request request = new Request.Builder()
@@ -39,7 +39,7 @@ public class JobController {
                 .build();
         OkHttpClient client = new OkHttpClient();
         Response response = client.newCall(request).execute();
-        JobCreate jobCreate1 = gson.fromJson(response.body().string(), JobCreate.class);
+        Job jobCreate1 = gson.fromJson(response.body().string(), Job.class);
         System.out.println(response.code());
         System.out.println(jobCreate1);
         if (!response.isSuccessful()) {

@@ -1,9 +1,9 @@
-package ApiTests;
+package apiTests;
 
-import Api.Controllers.AuthController;
-import Api.Controllers.CommentController;
-import Api.Controllers.JobController;
-import Api.Controllers.UserController;
+import Api.сontrollers.AuthController;
+import Api.сontrollers.CommentController;
+import Api.сontrollers.JobController;
+import Api.сontrollers.UserController;
 import entities.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ public class ApiTests {
 
     @Test(priority = 1)
     public void signUP() throws IOException {
-        AuthSignup authSignup = new AuthSignup();
+        SignUpData authSignup = new SignUpData();
         authSignup.setUsername("user3");
         authSignup.setPassword("Pass12345");
         authSignup.setConfirmPassword("Pass12345");
@@ -26,7 +26,7 @@ public class ApiTests {
 
     @Test(priority = 2)
     public void signIn() throws IOException {
-        AuthSignIn authSignIN = new AuthSignIn();
+        SignInData authSignIN = new SignInData();
         authSignIN.setUsername("user3");
         authSignIN.setPassword("Pass12345");
         AuthController authController = new AuthController();
@@ -37,13 +37,13 @@ public class ApiTests {
     //- CommentControllers----------------------------------------------------------------------------------------------
     @Test(priority = 10)
     public void addComment() throws IOException {
-        CommentCreate commentCreate = new CommentCreate();
+        Comment commentCreate = new Comment();
         commentCreate.setId(1);
         commentCreate.setUsername("User3");
         commentCreate.setCommentDate("22-02-2022");
         commentCreate.setMessage("New message");
         CommentController commentController = new CommentController();
-        CommentCreate commentCreateCheckResult = commentController.createComment(commentCreate, token, 29);
+        Comment commentCreateCheckResult = commentController.createComment(commentCreate, token, 29);
         Assert.assertEquals(commentCreateCheckResult.getMessage(), commentCreate.getMessage());
     }
 
@@ -57,7 +57,7 @@ public class ApiTests {
     //- JobController----------------------------------------------------------------------------------------------
     @Test(priority = 12)
     public void removeWork() throws IOException, RuntimeException {
-        JobDelete jobDelete = new JobDelete();
+        JobD jobDelete = new JobD();
         JobController jobController = new JobController();
         String message = jobController.deleteJobId(jobDelete, token, 578);
         System.out.println(message);
@@ -65,14 +65,14 @@ public class ApiTests {
 
     @Test(priority = 6)
     public void addWork() throws IOException, IllegalStateException {
-        JobCreate jobCreate = new JobCreate();
+        Job jobCreate = new Job();
         jobCreate.setId(1);
         jobCreate.setUser("user3");
         jobCreate.setTitle("NewJob");
         jobCreate.setPrice(50);
         jobCreate.setDescription("This is my new work");
         JobController jobController = new JobController();
-        JobCreate jobCreateCheckResult = jobController.createJob(jobCreate, token);
+        Job jobCreateCheckResult = jobController.createJob(jobCreate, token);
         Assert.assertEquals(jobCreateCheckResult.getTitle(), jobCreate.getTitle());
     }
 
@@ -100,13 +100,13 @@ public class ApiTests {
     //- UserController ----------------------------------------------------------------------------------------------
     @Test(priority = 3)
     public void updateUserInfo() throws IOException {
-        UserUpdate userUpdate = new UserUpdate();
+        User userUpdate = new User();
         userUpdate.setId(28);
         userUpdate.setUsername("MyNewName");
         userUpdate.setLastname("MyNewLastName");
         userUpdate.setName("NewName");
         UserController userController = new UserController();
-        UserUpdate userUpdateCheckResult = userController.updateUser(userUpdate, token);
+        User userUpdateCheckResult = userController.updateUser(userUpdate, token);
         Assert.assertEquals(userUpdateCheckResult.getName(), userUpdate.getName());
     }
 

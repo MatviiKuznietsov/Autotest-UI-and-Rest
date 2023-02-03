@@ -1,4 +1,4 @@
-package UiTests.Listeners;
+package uiTests.listeners;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.service.ExtentTestManager;

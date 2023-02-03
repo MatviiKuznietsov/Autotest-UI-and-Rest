@@ -3,7 +3,7 @@ package entities;
 import lombok.Data;
 
 @Data
-public class AuthSignup {
+public class SignUpData {
     private String username;
     private String password;
     private String confirmPassword;
